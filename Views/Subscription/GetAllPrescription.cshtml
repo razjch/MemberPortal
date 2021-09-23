@@ -1,0 +1,142 @@
+﻿@model IEnumerable<MemberPortal.Models.MemberPrescription>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAllPrescription</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="drugheader">
+        @Html.Partial("_partialHeader")
+    </div>
+
+    <div class="row" style="margin:20px 0 0 10px;">
+        <div class="col-md-5">
+            @using (Html.BeginForm("Subscribe", "Subscription", FormMethod.Post))
+            {
+                <form class="row g-3">
+                    <div class="col-auto" style="display: inline-block; margin-left:90px; width:250px">
+                        <input type="number" class="form-control" name="Id" placeholder="Enter Prescription Id" required>
+                    </div>
+                    <div class="col-auto" style="float: right; margin:0 130px 0 10px;">
+                        <button type="submit" class="btn btn-primary mb-3">Subscribe</button>
+                    </div>
+                </form>
+            }
+        </div>
+
+
+        <div class="col-md-2 text-center">
+            <span>|</span>
+        </div>
+
+        <div class="col-md-5">
+            @using (Html.BeginForm("UnSubscribe", "Subscription", FormMethod.Post))
+            {
+                <form class="row g-3">
+                    <div class="col-auto" style="display: inline-block; margin-left:40px; width:250px">
+                        <input type="number" class="form-control" name="Id" placeholder="Enter Prescription Id" required>
+                    </div>
+                    <div class="col-auto" style="float: right; margin:0 130px 0 10px;">
+                        <button type="submit" class="btn btn-primary mb-3">UnSubscribe</button>
+                    </div>
+                </form>
+            }
+        </div>
+
+    </div>
+
+    <hr />
+
+    <h2 style="text-align:center" class="active">Prescriptions Data</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrescriptionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MemberID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InsurancePolicyNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InsuranceProvider)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrescriptionDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DrugId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DosagePerDay)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrescriptionCourse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DoctorDetails)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrescriptionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemberID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InsurancePolicyNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InsuranceProvider)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrescriptionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DrugId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DosagePerDay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrescriptionCourse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoctorDetails)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="drugfooter">
+        @Html.Partial("_partialFooter")
+    </div>
+</body>
+<script>
+    if ('@ViewBag.MessageSubscribe'!='')
+        alert('@ViewBag.MessageSubscribe');
+    if ('@ViewBag.MessageUnSubscribe'!='')
+        alert('@ViewBag.MessageUnSubscribe');
+
+</script>
+</html>

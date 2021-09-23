@@ -1,0 +1,130 @@
+﻿@model IEnumerable<MemberPortal.Models.MemberSubscription>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAllSubscription</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="drugheader">
+        @Html.Partial("_partialHeader")
+    </div>
+
+    <div class="row" style="margin:20px 0 0 10px;">
+        <div class="col-md-5">
+            @using (Html.BeginForm("CreateRefill", "Refill", FormMethod.Post))
+            {
+                <form class="row g-3">
+                    <div class="col-auto" style="display: inline-block; margin-left:60px; width:250px">
+                        <input type="number" class="form-control" name="Id" placeholder="Enter Subscription Id" required>
+                    </div>
+                    <div class="col-auto" style="float: right; margin:0 130px 0 10px;">
+                        <button type="submit" class="btn btn-primary mb-3">Create Refill</button>
+                    </div>
+                </form>
+            }
+        </div>
+
+
+        <div class="col-md-2 text-center">
+            <span>|</span>
+        </div>
+
+        <div class="col-md-5">
+            @using (Html.BeginForm("GetRefillStatus", "Refill", FormMethod.Post))
+            {
+                <form class="row g-3">
+                    <div class="col-auto" style="display: inline-block; margin-left:40px; width:250px">
+                        <input type="number" class="form-control" name="Id" placeholder="Enter Subscription Id" required>
+                    </div>
+                    <div class="col-auto" style="float: right; margin:0 130px 0 10px;">
+                        <button type="submit" class="btn btn-primary mb-3">Get Refill Status</button>
+                    </div>
+                </form>
+            }
+        </div>
+
+    </div>
+
+    <hr />
+
+    <h2 style="text-align:center" class="active">Subscription Data</h2>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubscriptionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MemberId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubscriptionDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrescriptionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RefillOccurrence)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MemberLocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubscriptionStatus)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubscriptionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemberId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubscriptionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrescriptionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RefillOccurrence)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemberLocation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubscriptionStatus)
+                    </td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="drugfooter">
+        @Html.Partial("_partialFooter")
+    </div>
+</body>
+<script>
+    if ('@ViewBag.MessageRefill'!='')
+        alert('@ViewBag.MessageRefill');
+    if ('@ViewBag.MessageRefillDue'!='')
+        alert('@ViewBag.MessageRefillDue');
+</script>
+</html>

@@ -1,0 +1,133 @@
+﻿@model IEnumerable<MemberPortal.Models.Drug>
+
+@{
+    ViewData["Title"] = "GetAllDrugs";
+    Layout = "";
+
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="drugheader">
+        @Html.Partial("_partialHeader")
+    </div>
+
+    <div class="drugcontents" style="margin-top:20px;">
+        <div class="row" style="margin-left:20px;">
+            <div class="col-md-5">
+                @using (Html.BeginForm("GetById", "Drug", FormMethod.Post))
+                {
+                    <form class="row g-3">
+                        <div class="col-auto" style="display: inline-block; margin-left:90px; width:250px">
+                            <input type="number" class="form-control" name="Id" placeholder="Enter Drug Id" required>
+                            @Html.ValidationMessage("Id is Required")
+                        </div>
+                        <div class="col-auto" style="float: right; margin:0 130px 0 10px;">
+                            <button type="submit" class="btn btn-primary mb-3">Search</button>
+                        </div>
+                    </form>
+                 }
+            </div>
+
+               
+            <div class="col-md-2 text-center">
+                <span>|</span>
+            </div>
+
+            <div class="col-md-5">
+                @using (Html.BeginForm("GetByName", "Drug", FormMethod.Post))
+                {
+                    <form class="row g-3">
+                        <div class="col-auto" style="display: inline-block; margin-left:90px; width:250px">
+                            <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter Drug Name" required>
+                            
+                        </div>
+                        <div class="col-auto" style="float: right; margin:0 130px 0 10px;">
+                            <button type="submit" class="btn btn-primary mb-3">Search</button>
+                        </div>
+                    </form>
+                }
+            </div>
+
+        </div>       
+
+        <hr />
+
+        <h2 style="text-align:center" class="active">Listed All Drugs</h2>
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Manufacturer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ManufacturedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ExpiryDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.QtyLocation)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="padding-top:95px;">
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td style="padding-top:95px;">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td style="padding-top:95px;">
+                            @Html.DisplayFor(modelItem => item.Manufacturer)
+                        </td>
+                        <td style="padding-top:95px;">
+                            @Html.DisplayFor(modelItem => item.ManufacturedDate)
+                        </td>
+                        <td style="padding-top:95px;">
+                            @Html.DisplayFor(modelItem => item.ExpiryDate)
+                        </td>
+                        <td>
+                            @foreach (var locqty in item.QtyLocation)
+                            {
+                                <p>@Html.DisplayFor(modelItem => locqty.Location)---@Html.DisplayFor(modelItem => locqty.Quantity)</p>
+
+                            }
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="drugfooter">
+        @Html.Partial("_partialFooter")
+    </div>
+</body>
+
+<script>
+    if ('@ViewBag.MessageId'!='')
+        alert('@ViewBag.MessageId');
+    if ('@ViewBag.MessageStock'!='')
+        alert('@ViewBag.MessageStock');
+</script>
+
+</html>

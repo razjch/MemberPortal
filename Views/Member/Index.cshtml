@@ -1,0 +1,44 @@
+﻿@model AuthenticatedUser
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+
+
+
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Welcome! @Model.Name</h5>
+            <small></small>
+        </div>
+        <p class="mb-1"></p>
+        <small></small>
+    </a>
+    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Drug" asp-action="GetAllDrugs">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Drugs</h5>
+            @*<small class="text-muted">3 days ago</small>*@
+        </div>
+        <p class="mb-1">View all Drugs, Search Drugs</p>
+        <small class="text-muted">Drugs Updated Today</small>
+    </a>
+    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Subscription" asp-action="GetAllPrescription">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Subscription</h5>
+            @*<small class="text-muted">3 days ago</small>*@
+        </div>
+        <p class="mb-1">View Subscription Status</p>
+        <small class="text-muted">Click here to Subscribe/Unsubscibe</small>
+    </a>
+    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Refill" asp-action="GetAllSubscription">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Refill Prescription</h5>
+            @*<small class="text-muted">3 days ago</small>*@
+        </div>
+        <p class="mb-1">View Refill Status</p>
+        <small class="text-muted">Check Dues Status Features Added</small>
+    </a>
+</div>
+
+

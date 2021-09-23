@@ -1,0 +1,35 @@
+﻿
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memberportal
+  labels:
+    app: memberportal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: memberportal
+  template:
+    metadata:
+      labels:
+        app: memberportal
+    spec:
+      containers:
+      - name: memberportal
+        image: mailorderpharmacy.azurecr.io/memberportalimage:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: memberportal
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: memberportal-service
+spec:
+ type: LoadBalancer
+ ports:
+ - port: 80
+ selector:
+   app: memberportal
