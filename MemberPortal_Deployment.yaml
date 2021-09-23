@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: memberportal
+  name: memberportal-deployment
   labels:
     app: memberportal
 spec:
@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: memberportal-service
+  name: memberportal-service1
 spec:
  type: LoadBalancer
  ports:
