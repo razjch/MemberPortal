@@ -21,7 +21,7 @@ namespace MemberPortal.Controllers
         {
             int subscriptionId = Convert.ToInt32(form["Id"]);
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://20.40.247.22");
+            client.BaseAddress = new Uri("http://20.84.128.79");
             string token = HttpContext.Session.GetString("Token");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -44,7 +44,7 @@ namespace MemberPortal.Controllers
             else
             {
                 HttpClient client1 = new HttpClient();
-                client1.BaseAddress = new Uri("http://52.154.250.104");
+                client1.BaseAddress = new Uri("http://20.84.192.31");
                 ViewBag.MessageRefill = "You need to subscribe first :(";
                 int memberId = Convert.ToInt32(HttpContext.Session.GetInt32("MemberId"));
                 client1.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -64,7 +64,7 @@ namespace MemberPortal.Controllers
         {
             int subscriptionId = Convert.ToInt32(form["Id"]);
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://20.40.247.22");
+            client.BaseAddress = new Uri("http://20.84.128.79");
             string token = HttpContext.Session.GetString("Token");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -86,7 +86,7 @@ namespace MemberPortal.Controllers
             else
             {
                 HttpClient client1 = new HttpClient();
-                client1.BaseAddress = new Uri("http://52.154.250.104");
+                client1.BaseAddress = new Uri("http://20.84.192.31");
                 ViewBag.MessageRefill = "You need to subscribe first :(";
                 int memberId = Convert.ToInt32(HttpContext.Session.GetInt32("MemberId"));
                 client1.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -104,7 +104,7 @@ namespace MemberPortal.Controllers
         public ActionResult GetAllSubscription()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://52.154.250.104");
+            client.BaseAddress = new Uri("http://20.84.192.31");
             string token = HttpContext.Session.GetString("Token");
             int memberId = Convert.ToInt32(HttpContext.Session.GetInt32("MemberId"));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -133,7 +133,7 @@ namespace MemberPortal.Controllers
             string fromDate = form["Date"];
 
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://20.40.247.22");
+            client.BaseAddress = new Uri("http://20.84.128.79");
             string token = HttpContext.Session.GetString("Token");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -146,7 +146,7 @@ namespace MemberPortal.Controllers
                 RefillDueDTO data = JsonConvert.DeserializeObject<RefillDueDTO>(jsonString);
                 ViewBag.MessageRefillDue = $"SubscriptionId : {data.SubscriptionId} /n Refill Due Left {data.DueRefillTimes} Times";
                 HttpClient client1 = new HttpClient();
-                client1.BaseAddress = new Uri("http://52.154.250.104");
+                client1.BaseAddress = new Uri("http://20.84.192.31");
                 //string token = HttpContext.Session.GetString("Token");
                 int memberId = Convert.ToInt32(HttpContext.Session.GetInt32("MemberId"));
                 client1.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -162,7 +162,7 @@ namespace MemberPortal.Controllers
             {
                 ViewBag.MessageRefillDue = "Wrong Subscription Id Entered...";
                 HttpClient client1 = new HttpClient();
-                client1.BaseAddress = new Uri("http://52.154.250.104");
+                client1.BaseAddress = new Uri("http://20.84.192.31");
                 //string token = HttpContext.Session.GetString("Token");
                 int memberId = Convert.ToInt32(HttpContext.Session.GetInt32("MemberId"));
                 client1.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
