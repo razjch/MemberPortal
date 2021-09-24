@@ -21,7 +21,7 @@ namespace MemberPortal.Controllers
         {
             int Id = Convert.ToInt32(form["Id"]);
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8080");
+            client.BaseAddress = new Uri("http://20.83.8.158");
             string token = HttpContext.Session.GetString("Token");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -57,7 +57,7 @@ namespace MemberPortal.Controllers
             int Id = Convert.ToInt32(form["Id"]);
             string location = form["Location"];
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8080");
+            client.BaseAddress = new Uri("http://20.83.8.158");
             string token = HttpContext.Session.GetString("Token");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -100,7 +100,7 @@ namespace MemberPortal.Controllers
         {
             string name = form["Name"];
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8080");
+            client.BaseAddress = new Uri("http://20.83.8.158");
             string token = HttpContext.Session.GetString("Token");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -131,7 +131,7 @@ namespace MemberPortal.Controllers
         public ActionResult GetAllDrugs()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8080");
+            client.BaseAddress = new Uri("http://20.83.8.158");
             string token = HttpContext.Session.GetString("Token");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
