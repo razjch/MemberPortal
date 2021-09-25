@@ -26,7 +26,7 @@ namespace MemberPortal.Controllers
         public ActionResult Login(LoginModel loginModel)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://20.83.9.34");
+            client.BaseAddress = new Uri("https://authservicedevops.azurewebsites.net");
             //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", subscription.Token);
 
             StringContent content = new StringContent(JsonConvert.SerializeObject(loginModel), Encoding.UTF8, "application/json");
