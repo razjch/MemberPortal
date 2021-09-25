@@ -20,7 +20,7 @@ namespace MemberPortal.Controllers
         {
             int prescriptionId = Convert.ToInt32(form["Id"]);
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://20.84.192.31");
+            client.BaseAddress = new Uri("https://subscriptionservice1.azurewebsites.net");
             string token = HttpContext.Session.GetString("Token");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -66,7 +66,7 @@ namespace MemberPortal.Controllers
         {
             int prescriptionId = Convert.ToInt32(form["Id"]);
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://20.84.192.31");
+            client.BaseAddress = new Uri("https://subscriptionservice1.azurewebsites.net");
             string token = HttpContext.Session.GetString("Token");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             SubscriptionDTO model = new SubscriptionDTO
@@ -104,7 +104,7 @@ namespace MemberPortal.Controllers
         public ActionResult GetAllPrescription()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://20.84.192.31");
+            client.BaseAddress = new Uri("https://subscriptionservice1.azurewebsites.net");
             string token = HttpContext.Session.GetString("Token");
             int memberId = Convert.ToInt32(HttpContext.Session.GetInt32("MemberId"));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
